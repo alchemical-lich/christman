@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+\usepackage{tikz}
+\usepackage{geometry}
+\geometry{letterpaper, landscape, margin=0.3in}
+\usetikzlibrary{positioning, calc}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\Large \textbf{THE CRYSTAL CAVES --- Level 2: The Ythian Complex}}\\[0.2em]
+{\small 17 Rooms | Ancient Crystal Construct Complex | Geometric Layout}
+\end{center}
+
+\vspace{0.1em}
+
+\begin{center}
+\begin{tikzpicture}[
+    x=0.55cm, y=0.55cm,
+    room/.style={draw, very thick, rectangle, inner sep=0pt},
+    entryroom/.style={draw, very thick, rectangle, inner sep=0pt, fill=blue!8},
+    combatroom/.style={draw, very thick, rectangle, inner sep=0pt, fill=red!8},
+    puzzleroom/.style={draw, very thick, rectangle, inner sep=0pt, fill=yellow!10},
+    npcroom/.style={draw, very thick, rectangle, inner sep=0pt, fill=green!10},
+    bossroom/.style={draw, very thick, rectangle, inner sep=0pt, fill=red!20},
+    connection/.style={draw, thick},
+    secret/.style={draw, thick, dashed},
+    rlabel/.style={font=\tiny},
+]
+
+% North arrow
+\node at (-2,24) {\normalsize $\uparrow$};
+\node at (-2,23) {\scriptsize\textbf{N}};
+
+% ============================
+% OUTER COMPLEX (Rooms 1-5)
+% ============================
+
+% Room 1: Ythian Antechamber
+\draw[entryroom] (0,20) rectangle +(4,4);
+\node[font=\small\bfseries] at (2,23) {1};
+\node[rlabel] at (2,21) {\tiny Antechamber};
+\node at (2,22) {\tiny $\blacktriangle$ L1R15};
+
+% Room 2: Guard Chamber
+\draw[combatroom] (0,13) rectangle +(5,4);
+\node[font=\small\bfseries] at (2.5,16) {2};
+\node[rlabel] at (2.5,14) {\tiny Guard Chamber};
+
+% Connection 1->2
+\draw[connection] (2,20) -- (2.5,17);
+\node[rlabel,right] at (2.3,18.5) {S};
+
+% Room 3: Archive
+\draw[puzzleroom] (7,20) rectangle +(5,4);
+\node[font=\small\bfseries] at (9.5,23) {3};
+\node[rlabel] at (9.5,21) {\tiny Archive};
+
+% Connection 1->3
+\draw[connection] (4,22) -- (7,22);
+\node[rlabel,above] at (5.5,22) {E};
+
+% Connection 2->3
+\draw[connection] (5,15) -- (8,20);
+\node[rlabel,right] at (6.8,17.5) {W};
+
+% Room 4: I'Gz's Den (hidden)
+\draw[npcroom] (14,17) rectangle +(3,3);
+\node[font=\small\bfseries] at (15.5,19) {4};
+\node[rlabel] at (15.5,18) {\tiny I'Gz's Den};
+\node[font=\tiny,gray] at (15.5,17.4) {(hidden)};
+
+% Crawlways from Room 4 (dashed to indicate hidden access)
+\draw[secret] (14,18.5) -- (12,21);
+\node[rlabel,left,red] at (12.8,19.8) {\tiny crawl};
+\draw[secret] (15.5,17) -- (15.5,13);
+\node[rlabel,right,red] at (15.5,15) {\tiny crawl};
+\draw[secret] (17,18) -- (20,16);
+\node[rlabel,above,red] at (18.5,17.2) {\tiny crawl};
+\draw[secret] (17,19) -- (23,20);
+\node[rlabel,above,red] at (20,19.8) {\tiny crawl};
+
+% Room 5: Descent Point Alpha (Lower)
+\draw[combatroom] (0,6) rectangle +(4,4);
+\node[font=\small\bfseries] at (2,9) {5};
+\node[rlabel] at (2,7) {\tiny DP Alpha};
+\node at (2,8) {\tiny $\blacktriangle$ L1R20};
+\node[font=\tiny,red] at (2,7.5) {damaged};
+
+% Connection 2->6 is south (will draw later via Room 6)
+
+% ============================
+% INNER COMPLEX (Rooms 6-13)
+% ============================
+
+% Room 6: Hall of Echoes
+\draw[combatroom] (5,8) rectangle +(3,8);
+\node[font=\small\bfseries] at (6.5,15) {6};
+\node[rlabel] at (6.5,9) {\tiny Hall of};
+\node[rlabel] at (6.5,9.7) {\tiny Echoes};
+
+% Connection 2->6
+\draw[connection] (3,13) -- (5.5,13);
+\node[rlabel,above] at (4.3,13) {S};
+
+% Connection 5->6
+\draw[connection] (4,8) -- (5,9);
+\node[rlabel,above] at (4.5,8.8) {S};
+
+% Room 7: Workshop
+\draw[puzzleroom] (10,12) rectangle +(5,4);
+\node[font=\small\bfseries] at (12.5,15) {7};
+\node[rlabel] at (12.5,13) {\tiny Workshop};
+
+% Connection 6->7
+\draw[connection] (8,13) -- (10,13);
+\node[rlabel,above] at (9,13) {E};
+
+% Connection 3->7
+\draw[connection] (9.5,20) -- (12,16);
+\node[rlabel,right] at (10.8,18) {S};
+
+% Room 8: Medical Bay / Descent Point Beta
+\draw[combatroom] (17,12) rectangle +(5,4);
+\node[font=\small\bfseries] at (19.5,15) {8};
+\node[rlabel] at (19.5,13) {\tiny Medical Bay};
+\node at (19.5,14.5) {\tiny $\blacktriangle$ L1R21};
+\node[font=\tiny,red] at (19.5,13.5) {tethered};
+
+% Connection 7->8
+\draw[connection] (15,14) -- (17,14);
+\node[rlabel,above] at (16,14) {E};
+
+% Room 9: Assembly Chamber
+\draw[combatroom] (10,5) rectangle +(5,4);
+\node[font=\small\bfseries] at (12.5,8) {9};
+\node[rlabel] at (12.5,6) {\tiny Assembly};
+\node[font=\tiny,red] at (12.5,6.7) {weakened};
+
+% Connection 5->9
+\draw[connection] (4,7.5) -- (10,7);
+\node[rlabel,above] at (7,7.5) {E};
+
+% Connection 6->9
+\draw[connection] (6.5,8) -- (11,5);
+\node[rlabel,left] at (8.5,6.5) {S};
+
+% Connection 8->9
+\draw[connection] (19.5,12) -- (14,9);
+\node[rlabel,above] at (16.7,10.8) {E};
+
+% Room 10: Control Room
+\draw[puzzleroom] (18,6) rectangle +(5,4);
+\node[font=\small\bfseries] at (20.5,9) {10};
+\node[rlabel] at (20.5,7) {\tiny Control Room};
+\node[red,font=\tiny] at (20.5,8) {\tiny $\times$ trap};
+
+% Connection 7->10
+\draw[connection] (13,12) -- (19,10);
+\node[rlabel,above] at (16,11.3) {S};
+
+% Room 11: Ythian Quarters
+\draw[puzzleroom] (10,0) rectangle +(6,3);
+\node[font=\small\bfseries] at (13,2) {11};
+\node[rlabel] at (13,1) {\tiny Ythian Quarters};
+
+% Connection 6->11 (branch)
+\draw[connection] (7,8) -- (11,3);
+\node[rlabel,left] at (8.8,5.5) {\tiny NW};
+
+% Connection 9->11
+\draw[connection] (12.5,5) -- (12.5,3);
+\node[rlabel,right] at (12.5,4) {S};
+
+% Connection 10->11
+\draw[connection] (20.5,6) -- (16,2);
+\node[rlabel,right] at (18.5,4) {S};
+
+% Room 12: Descent Point Gamma (Lower)
+\draw[combatroom] (25,10) rectangle +(5,4);
+\node[font=\small\bfseries] at (27.5,13) {12};
+\node[rlabel] at (27.5,11) {\tiny DP Gamma};
+\node at (27.5,12) {\tiny $\blacktriangle$ L1R22};
+
+% Connection 9->12
+\draw[connection] (15,8) -- (25,12);
+\node[rlabel,above] at (20,10.5) {NE};
+
+% Room 13: Crystal Gallery
+\draw[puzzleroom] (23,3) rectangle +(5,5);
+\node[font=\small\bfseries] at (25.5,7) {13};
+\node[rlabel] at (25.5,4) {\tiny Crystal Gallery};
+\node[font=\tiny,red] at (25.5,5) {degraded};
+
+% Connection 11->13
+\draw[connection] (16,1.5) -- (23,5);
+\node[rlabel,above] at (19.5,3.5) {S};
+
+% Connection 12->13
+\draw[connection] (27,10) -- (26,8);
+\node[rlabel,right] at (26.5,9) {S};
+
+% Connection 10->13 (sealed)
+\draw[secret] (23,7) -- (23,7);
+\draw[secret] (23,7.5) -- (20.5,7.5);
+\node[rlabel,below,red] at (21.8,7.5) {\tiny sealed};
+
+% ============================
+% CORE AREA (Rooms 14-17)
+% ============================
+
+% Room 14: Sealed Chamber
+\draw[room] (30,18) rectangle +(4,4);
+\node[font=\small\bfseries] at (32,21) {14};
+\node[rlabel] at (32,19) {\tiny Sealed Chamber};
+\node at (32,20) {\tiny $\blacktriangle$ L1R7};
+
+% Connection 13->14
+\draw[connection] (28,6) -- (31,18);
+\node[rlabel,right] at (29.8,12) {E};
+
+% Room 15: Descent Point Delta (Lower)
+\draw[combatroom] (30,1) rectangle +(5,4);
+\node[font=\small\bfseries] at (32.5,4) {15};
+\node[rlabel] at (32.5,2) {\tiny DP Delta};
+\node at (32.5,3) {\tiny $\blacktriangle$ L1R23};
+
+% Connection 13->16 and 15->16 via Room 16 area
+% Room 15 connects south from 13/16
+
+% Room 16: Hall of the Guardian
+\draw[bossroom] (30,8) rectangle +(6,5);
+\node[font=\small\bfseries] at (33,12) {16};
+\node[rlabel] at (33,9) {\tiny Hall of Guardian};
+\node[font=\scriptsize,red] at (33,10.8) {GUARDIAN};
+
+% Connection 12->16
+\draw[connection] (30,12) -- (30,11);
+
+% Connection 13->16
+\draw[connection] (28,5) -- (31,8);
+\node[rlabel,right] at (29.5,6.8) {S};
+
+% Connection 15->16
+\draw[connection] (33,5) -- (33,8);
+\node[rlabel,right] at (33,6.5) {S};
+
+% Room 17: Crystal Core
+\draw[bossroom] (32,14) rectangle +(5,4);
+\node[font=\small\bfseries] at (34.5,17) {17};
+\node[rlabel] at (34.5,15) {\tiny Crystal Core};
+\node[font=\scriptsize,blue] at (34.5,16) {CORE};
+
+% Connection 16->17
+\draw[connection] (34,13) -- (34,14);
+\node[rlabel,right] at (34,13.5) {S};
+
+% ============================
+% LEGEND
+% ============================
+\node[anchor=west,font=\scriptsize\bfseries] at (-2,4) {Legend:};
+
+\draw[thick] (-2,3) -- (-0.5,3);
+\node[anchor=west,rlabel] at (0,3) {Passage};
+
+\draw[thick,dashed] (-2,2) -- (-0.5,2);
+\node[anchor=west,rlabel] at (0,2) {Secret/Sealed/Crawlway};
+
+\node at (-1.3,1) {\tiny $\blacktriangle$};
+\node[anchor=west,rlabel] at (0,1) {Ascent to L1};
+
+\node[red,font=\tiny] at (-1.3,0) {$\times$};
+\node[anchor=west,rlabel] at (0,0) {Trap};
+
+\draw[entryroom] (-2,-1.5) rectangle +(-0.5,-0.5);
+\draw[entryroom] (-2,-1) rectangle +(1.5,0.6);
+\node[anchor=west,rlabel] at (0,-0.7) {Entry};
+
+\draw[combatroom] (-2,-2) rectangle +(1.5,0.6);
+\node[anchor=west,rlabel] at (0,-1.7) {Combat};
+
+\draw[puzzleroom] (-2,-3) rectangle +(1.5,0.6);
+\node[anchor=west,rlabel] at (0,-2.7) {Puzzle/Explore};
+
+\draw[npcroom] (-2,-4) rectangle +(1.5,0.6);
+\node[anchor=west,rlabel] at (0,-3.7) {NPC/Safe};
+
+\draw[bossroom] (-2,-5) rectangle +(1.5,0.6);
+\node[anchor=west,rlabel] at (0,-4.7) {Boss/Core};
+
+% ============================
+% ZONE LABELS
+% ============================
+\node[font=\scriptsize,gray] at (3,25) {\textit{Outer Complex (1--5)}};
+\node[font=\scriptsize,gray] at (15,17) {\textit{Inner Complex (6--13)}};
+\node[font=\scriptsize,gray] at (34,19) {\textit{Core Area (14--17)}};
+
+% ============================
+% Passkey locations
+% ============================
+\node[font=\tiny,blue!70!black] at (9.5,22) {\tiny [passkey]};
+\node[font=\tiny,blue!70!black] at (12.5,14) {\tiny [passkey]};
+
+\end{tikzpicture}
+\end{center}
+
+\end{document}

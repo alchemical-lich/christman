@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{amssymb}
+\geometry{letterpaper, landscape, margin=0.5in}
+\usetikzlibrary{positioning, calc}
+
+\begin{document}
+
+\begin{center}
+{\Huge \textbf{THE PROFANE TEMPLE OF DEMETER}}\\[0.3em]
+{\Large Level 5: The Inner Sanctum}
+\end{center}
+
+\vspace{1em}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+
+% North arrow
+\node at (-2,8) {\Large $\uparrow$};
+\node at (-2,7.5) {\textbf{N}};
+
+% ============================================================
+% ROOM 1: The Threshold (top, entry from Sealed Doors)
+% ============================================================
+\draw[very thick] (3,6) rectangle (6,8);
+\node at (4.5,7.5) {\Large \textbf{1}};
+\node[font=\small] at (4.5,6.5) {20$\times$30 ft};
+\node at (4.5,7) {$\blacktriangle$};
+\node[font=\tiny, blue] at (4.5,6.2) {from L4 R10};
+
+% Connection Room 1 to Room 2 (south)
+\draw[thick] (4.5,6) -- (4.5,5);
+\node[right,font=\footnotesize] at (4.5,5.5) {archway};
+
+% ============================================================
+% ROOM 2: The Desecrated Gallery (large central chamber)
+% ============================================================
+\draw[very thick] (1,1.5) rectangle (8,5);
+\node at (4.5,4.5) {\Large \textbf{2}};
+\node[font=\small] at (4.5,2) {50$\times$30 ft};
+
+% Pillars in Room 2
+\node[font=\tiny] at (3,3.5) {$\bullet$ pillar};
+\node[font=\tiny] at (6,3.5) {$\bullet$ pillar};
+
+% Connection Room 2 to Room 3 (south-west)
+\draw[thick] (1,3) -- (-1,3) -- (-1,1);
+\node[above,font=\footnotesize] at (0,3) {tunnel};
+
+% Connection Room 2 to Room 4 (south-east, partially collapsed)
+\draw[thick] (8,3) -- (9.5,3) -- (9.5,1);
+\node[above,font=\footnotesize] at (8.75,3) {passage};
+\node[font=\tiny] at (9.5,2) {squeeze};
+
+% Secret connection Room 2 to Room 5 (south, hidden behind niche)
+\draw[thick,dashed] (4.5,1.5) -- (4.5,0);
+\node[left,font=\tiny,red] at (4.5,0.75) {secret};
+\node[right,font=\footnotesize] at (4.5,0.75) {narrow};
+
+% ============================================================
+% ROOM 3: Adrianna's Sanctum (south-west)
+% ============================================================
+\draw[very thick, fill=red!8] (-3,-1) rectangle (0.5,1);
+\node at (-1.25,0.5) {\Large \textbf{3}};
+\node[font=\small] at (-1.25,-0.5) {25$\times$20 ft};
+\node[font=\tiny,red!50!black] at (-1.25,-0.8) {Adrianna};
+
+% Connection Room 3 to Room 4 (south, through natural tunnel)
+\draw[thick] (0.5,0) -- (2,0) -- (2,-1) -- (7.5,-1) -- (7.5,-0.5);
+\node[above,font=\footnotesize] at (4.5,-1) {natural tunnel};
+
+% ============================================================
+% ROOM 4: The Fountain of Demeter (south-east, large circular cavern)
+% ============================================================
+\draw[very thick, fill=blue!5] (6,-4) rectangle (11,0.5);
+\node at (8.5,0) {\Large \textbf{4}};
+\node[font=\small] at (8.5,-3.5) {40 ft diam.};
+\node[font=\tiny] at (8.5,-2) {$\sim$ Fountain $\sim$};
+\node[font=\tiny,red!50!black] at (8.5,-2.5) {Sarathek};
+\node[font=\tiny, blue] at (8.5,-3) {(circular cavern)};
+
+% ============================================================
+% ROOM 5: The Forgotten Stair (bottom center, hidden shaft)
+% ============================================================
+\draw[very thick] (3.5,-2) rectangle (5.5,0);
+\node at (4.5,-0.5) {\Large \textbf{5}};
+\node[font=\small] at (4.5,-1.5) {5$\times$5 ft};
+\node at (4.5,-1) {$\blacktriangle$};
+\node[font=\tiny, blue] at (4.5,-1.8) {to surface};
+
+% ============================================================
+% LEGEND
+% ============================================================
+
+\node[anchor=west,font=\large] at (12,7) {\textbf{Legend:}};
+
+\draw[thick] (12,6.5) -- (13.5,6.5);
+\node[anchor=west,font=\small] at (13.7,6.5) {Passage};
+
+\draw[thick,dashed] (12,6) -- (13.5,6);
+\node[anchor=west,font=\small] at (13.7,6) {Secret};
+
+\node at (12.8,5.5) {$\blacktriangle$};
+\node[anchor=west,font=\small] at (13.7,5.5) {Stairs Up};
+
+\draw[very thick, fill=red!8] (12,4.8) rectangle (13.5,5.2);
+\node[anchor=west,font=\small] at (13.7,5) {Adrianna's Lair};
+
+\draw[very thick, fill=blue!5] (12,4.3) rectangle (13.5,4.7);
+\node[anchor=west,font=\small] at (13.7,4.5) {The Fountain};
+
+% ============================================================
+% LEVEL CONNECTION ANNOTATIONS
+% ============================================================
+
+\node[font=\small, blue, anchor=west] at (12,3.5) {\textbf{Level Connections:}};
+\node[font=\small, anchor=west] at (12,3) {R1 $\uparrow$ Level 4, Room 10};
+\node[font=\small, anchor=west] at (12,2.5) {\quad (through Sealed Doors)};
+\node[font=\small, anchor=west] at (12,2) {R5 $\uparrow$ Surface};
+\node[font=\small, anchor=west] at (12,1.5) {\quad (100 ft shaft, iron rungs)};
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{1em}
+
+\section*{Room Key}
+\begin{enumerate}
+    \item \textbf{The Threshold} (20$\times$30 ft) --- Entry from Sealed Doors, demonic runes, corrupted trickle
+    \item \textbf{The Desecrated Gallery} (50$\times$30 ft) --- Offering hall, 3 Lesser Demons, 2 Corrupted Acolytes, tally marks
+    \item \textbf{Adrianna's Sanctum} (25$\times$20 ft) --- Serene Exculpator Adrianna (Cleric 8), ritual chamber, throne
+    \item \textbf{The Fountain of Demeter} (40 ft diameter) --- Corrupted sacred spring, Sarathek (Greater Demon, HD 9+9), purification quest
+    \item \textbf{The Forgotten Stair} (5$\times$5 ft shaft) --- Hidden escape route, 100 ft climb to surface
+\end{enumerate}
+
+\section*{Key NPCs}
+\begin{itemize}
+    \item \textbf{Serene Exculpator Adrianna} (Cleric 8, LE) --- Room 3. Manipulative fallen priestess. Diplomacy first, violence last.
+    \item \textbf{Sarathek, Greater Demon} (HD 9+9, CE) --- Room 4. Lord of Gluttony. Regenerates in Fountain. Holy weapons deal double damage.
+\end{itemize}
+
+\end{document}
